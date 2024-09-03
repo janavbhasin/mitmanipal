@@ -1,0 +1,13 @@
+set serveroutput on
+DECLARE
+bk_count number;
+bk_subject varchar(30);
+BEGIN
+bk_subject:='&Subject';
+dbms_output.put_line('input subject is '||bk_subject);
+select count(*) into bk_count
+from book 
+where subject=bk_subject;
+dbms_output.put_line('subject count is '||bk_count);
+END;
+/

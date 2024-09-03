@@ -1,0 +1,188 @@
+q1
+
+SQL> select (t.course_id),course_id from takes t group by course_id;
+
+COUNT(T.COURSE_ID) COURSE_I
+------------------ --------
+                 1 HIS-351
+                 1 EE-181
+                 7 CS-101
+                 2 CS-347
+                 1 FIN-201
+                 2 CS-319
+                 1 BIO-101
+                 1 PHY-101
+                 2 CS-315
+                 2 CS-190
+                 1 MU-199
+
+COUNT(T.COURSE_ID) COURSE_I
+------------------ --------
+                 1 BIO-301
+
+12 rows selected.
+
+q2 
+
+SQL> select count(id),dept_name from student group by dept_name having avg(distinct id)>10; 
+
+ COUNT(ID) DEPT_NAME
+---------- --------------------
+         2 Elec. Eng.
+         3 Physics
+         4 Comp. Sci.
+         1 Finance
+         1 Biology
+         1 History
+         1 Music
+
+7 rows selected.
+
+q3
+
+SQL> select dept_name,count(course_id) from course group by dept_name;
+
+DEPT_NAME            COUNT(COURSE_ID)
+-------------------- ----------------
+Elec. Eng.                          1
+Physics                             1
+Comp. Sci.                          5
+Finance                             1
+Biology                             3
+History                             1
+Music                               1
+
+7 rows selected.
+
+q4
+
+SQL> select dept_name,avg(i.salary) from instructor i group by dept_name having avg(i.salary)>=42000;
+
+DEPT_NAME            AVG(I.SALARY)
+-------------------- -------------
+Elec. Eng.                   80000
+Physics                      91000
+Comp. Sci.              77333.3333
+Finance                      85000
+Biology                      72000
+History                      61000
+
+6 rows selected.
+
+q5
+
+select count(id),course_id,sec_id from takes where semester='Spring' and year=2009 group by course_id,sec_id;
+
+ COUNT(ID) COURSE_I SEC_ID
+---------- -------- --------
+         1 EE-181   1
+         2 CS-190   2
+
+q6
+
+SQL> select course_id from prereq order by course_id;
+
+COURSE_I
+--------
+BIO-301
+BIO-399
+CS-190
+CS-315
+CS-319
+CS-347
+EE-181
+
+7 rows selected.
+q6
+
+SQL> select * from instructor order by salary desc;
+
+ID    NAME                 DEPT_NAME                SALARY
+----- -------------------- -------------------- ----------
+22222 Einstein             Physics                   95000
+83821 Brandt               Comp. Sci.                92000
+12121 Wu                   Finance                   90000
+33456 Gold                 Physics                   87000
+98345 Kim                  Elec. Eng.                80000
+76543 Singh                Finance                   80000
+45565 Katz                 Comp. Sci.                75000
+76766 Crick                Biology                   72000
+10101 Srinivasan           Comp. Sci.                65000
+58583 Califieri            History                   62000
+32343 El Said              History                   60000
+
+ID    NAME                 DEPT_NAME                SALARY
+----- -------------------- -------------------- ----------
+15151 Mozart               Music                     40000
+
+12 rows selected.
+  
+q8
+SQL> select max(sal)from(select sum(salary) sal from instructor group by dept_name);
+
+  MAX(SAL)
+----------
+    232000
+
+q9
+
+SQL> select dept_name from(select dept_name from instructor group by dept_name having avg(salary)>42000);
+
+DEPT_NAME
+--------------------
+Elec. Eng.
+Physics
+Comp. Sci.
+Finance
+Biology
+History
+
+6 rows selected.
+ 
+q10
+
+SQL> select max(i) from(select count(id) i from takes group by sec_id,semester,year having semester='Spring' and year=2010 );
+
+  MAX(I)
+----------
+         7
+
+q11 
+
+SQL> select name from(select distinct(id) ok3 from (select distinct(t1.course_id) ok2 from(select id ok1 from student where dept_name='Comp. Sci.'),takes t1 where t1.id=ok1), teaches t2 where t2.course_id=ok2), instructor i where i.id=ok3;
+
+NAME
+--------------------
+Srinivasan
+Katz
+Brandt
+
+q12
+
+SQL> select a,b from(SELECT dept_name a, AVG(salary)b FROM instructor GROUP BY dept_name HAVING AVG(salary)>50000 AND COUNT(ID)>=2);>5 it gives no rows selected
+
+A                             B
+-------------------- ----------
+Physics                   91000
+Comp. Sci.           77333.3333
+Finance                   85000
+History                   61000
+
+q13
+
+with ok as(select max(budget) as ok from department) select * from department ,ok where department.budget=ok;
+
+ DEPT_NAME            BUILDING            BUDGET         OK
+-------------------- --------------- ---------- ----------
+Finance              Painter             120000     120000
+
+with dept_tot_sal(dept_name, tot_sal) as (select dept_name, sum(salary) as tot_sal from instructor group by dept_name), avg_sal(val) as (select avg(tot_sal) from dept_tot_sal)
+select d.dept_name, d.tot_sal from dept_tot_sal d, avg_sal a where d.tot_sal>a.val;
+
+DEPT_NAME               TOT_SAL
+-------------------- ----------
+Physics                  182000
+Comp. Sci.               232000
+Finance                  170000
+ 
+

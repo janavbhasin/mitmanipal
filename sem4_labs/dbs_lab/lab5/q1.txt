@@ -1,0 +1,167 @@
+select * from department;
+select * from dependent;
+select * from dept_locations;
+select * from employee;
+select * from project;
+select * from works_on;
+***********************************************************************************************
+q1 a
+
+SQL> select bdate,address from employee where fname='John'and minit='B' and lname='Smith';
+
+BDATE     ADDRESS
+--------- ------------------------------
+09-JAN-65 731 Fondren, Houston, TX
+
+q1 b
+
+SQL> select fname,address from employee e join department d on d.dnumber=e.dno where dname='Research';
+
+FNAME           ADDRESS
+--------------- ------------------------------
+John            731 Fondren, Houston, TX
+Franklin        638 Voss, Houston, TX
+Ramesh          975 Fire Oak, Humble, TX
+Joyce           5631 Rice, Houston, TX
+
+q2
+
+SQL> select lname,dno,address,bdate,pnumber from (project p join employee e on p.dnum=e.dno),department d where p.plocation='Stafford' and e.dno=d.dnumber and d.mgr_ssn=e.ssn; 
+
+LNAME                  DNO ADDRESS                        BDATE        PNUMBER
+--------------- ---------- ------------------------------ --------- ----------
+Wallace                  4 291 Berry, Bellaire, TX        20-JUN-41         10
+
+FNAME           LNAME           FNAME           LNAME
+--------------- --------------- --------------- ---------------
+Richard         Marini          Richard         Marini
+Franklin        Wong            Joyce           English
+Franklin        Wong            Ramesh          Narayan
+Franklin        Wong            John            Smith
+Jennifer        Wallace         Ahmad           Jabbar
+Jennifer        Wallace         Alicia          Zelaya
+James           Borg            Jennifer        Wallace
+James           Borg            Franklin        Wong
+                                James           Borg
+
+9 rows selected.
+
+q3
+SQL> select e2.fname,e2.lname,e1.fname,e1.lname from employee e1 left outer join employee e2 on e1.super_ssn=e2.ssn;
+
+FNAME           LNAME           FNAME           LNAME
+--------------- --------------- --------------- ---------------
+Richard         Marini          Richard         Marini
+Franklin        Wong            Joyce           English
+Franklin        Wong            Ramesh          Narayan
+Franklin        Wong            John            Smith
+Jennifer        Wallace         Ahmad           Jabbar
+Jennifer        Wallace         Alicia          Zelaya
+James           Borg            Jennifer        Wallace
+James           Borg            Franklin        Wong
+                                James           Borg
+
+9 rows selected.
+
+q4
+
+SQL> select w.pno from (employee e join works_on w on e.ssn=w.essn) where lname='Smith'; 
+
+       PNO
+----------
+         1
+         2
+
+q5
+
+SQL> select 1.1*e.salary from (project p join works_on w on p.pnumber=w.pno), employee e where p.pname='ProductX' and e.ssn=w.essn;
+
+1.1*E.SALARY
+------------
+       33000
+       27500
+
+
+
+q6
+
+SQL> select fname,lname,e.dno,pname, p.pnumber from (employee e join works_on w on w.essn=e.ssn)join project p on w.pno=p.pnumber order by e.dno, fname, lname; 
+
+FNAME           LNAME                  DNO PNAME              PNUMBER
+--------------- --------------- ---------- --------------- ----------
+Ahmad           Jabbar                   4 Computerization         10
+Ahmad           Jabbar                   4 Newbenefits             30
+Alicia          Zelaya                   4 Computerization         10
+Alicia          Zelaya                   4 Newbenefits             30
+James           Borg                     4 Reorganization          20
+Jennifer        Wallace                  4 Reorganization          20
+Jennifer        Wallace                  4 Newbenefits             30
+Franklin        Wong                     5 Computerization         10
+Franklin        Wong                     5 Reorganization          20
+Franklin        Wong                     5 ProductY                 2
+Franklin        Wong                     5 ProductZ                 3
+
+FNAME           LNAME                  DNO PNAME              PNUMBER
+--------------- --------------- ---------- --------------- ----------
+John            Smith                    5 ProductX                 1
+John            Smith                    5 ProductY                 2
+Joyce           English                  5 ProductX                 1
+Joyce           English                  5 ProductY                 2
+Ramesh          Narayan                  5 ProductZ                 3
+
+16 rows selected.
+
+q7 
+
+SQL> select fname from employee e ,dependent d where fname=dependent_name and d.sex=e.sex;
+
+no rows selected
+
+q8
+
+SQL> (select fname from employee)minus(select fname from employee e ,dependent d where fname=dependent_name and d.sex=e.sex);
+
+FNAME
+---------------
+Ahmad
+Alicia
+Franklin
+James
+Jennifer
+John
+Joyce
+Ramesh
+Richard
+
+9 rows selected.
+
+q9 
+
+SQL> select fname from employee where ssn in (select distinct(essn) from dependent) and ssn in (select mgr_ssn from department);
+ 
+FNAME
+---------------
+Franklin
+Jennifer
+
+q10
+
+SQL> Select max(salary), sum(salary), min(salary), avg(salary) from employee;
+
+MAX(SALARY) SUM(SALARY) MIN(SALARY) AVG(SALARY)
+----------- ----------- ----------- -----------
+      55000      318000       25000  35333.3333
+
+q11
+
+select pname,pnumber from project p ,works_on w where p.pnumber=w.pno group by pname;
+
+11. For each project, retrieve the project number, the project name, and the number 
+of employees who work on that project. 
+
+12. For each project on which more than two employees work, retrieve the project 
+number, the project name, and the number of employees who work on the 
+project. 
+
+13. For each department that has more than five employees, retrieve the department 
+number and the number of its employees who are making more than 40,000.  

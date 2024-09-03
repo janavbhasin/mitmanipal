@@ -1,0 +1,27 @@
+9 select name,dept_name from student;
+
+10 select * from instructor where dept_name='Comp. Sci.';
+
+11 select course_id from course where dept_name='Comp. Sci.' and credits=3;
+
+12 select course_id,title from student s,course c where s.id=12345;
+
+13 select * from instructor where salary between 40000 and 90000;
+
+14 select i.id from instructor i, teaches t where i.id=t.id; 
+
+15 select t.course_id,s.year,st.name from takes t,student st,section s where s.room_number=514 and st.id=t.id and t.course_id=s.course_id and t.semester=s.semester and s.year= t.year;
+
+
+
+SELECT name, c.course_id,c.title
+  2  FROM takes t,student s,course c
+  3  WHERE t.id=s.id
+  4  AND c.course_id=t.course_id
+  5  AND t.year=2009;
+
+
+
+SQL> select name from instructor where dept_name like '%C%';
+
+

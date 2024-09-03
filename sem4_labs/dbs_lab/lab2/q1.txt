@@ -1,0 +1,38 @@
+1 create table employee(emp_no numeric(3),empname varchar(30)not null,gender varchar(1),salary numeric(7)not null,address varchar(30)not null,dno numeric(3)not null,primary key(emp_no),check(gender in ('M','F')));
+
+2 create table department1(deptno numeric(3),deptname varchar(30),location varchar(30),unique(deptname),primary key(deptno));
+
+3 alter table employee add constraint fkey foreign key(dno) references department1;
+
+4 insert into department1 values(321,'Cse','AB5 firt floor');
+insert into employee values(123,'janav','M',7654321,'gurgaon',321);
+insert into department1 values(111,'Cse ai and ml','AB5 firt floor');
+insert into employee values(122,'anish','M',3333333,'haryana',111);
+insert into department1 values(131,'Cse core','AB5 second floor');
+insert into employee values(121,'shweta','M',10,'mysore',131);
+insert into department1 values(141,'it','AB5 second floor');
+insert into employee values(161,'aryaman','M',100,'gtown',141);
+insert into department1 values(181,'comp','AB5 second floor');
+insert into employee values(171,'tejaswar','M',0,'south',181);
+insert into employee values(191,'Viraj','F',20,'kolkata',181);
+
+5 insert into employee values(191,'tejaswar','M',0,'south',191);
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A15.FKEY) violated - parent key not found
+
+insert into department1 values(281,'comp','AB5 second floor');
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A15.SYS_C00146184) violated
+
+6 delte from department1 where deptno=181;
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (A15.FKEY) violated - child record found
+
+7 alter table employee drop constraint fkey;
+alter table employee add constraint fkey foreign key(dno) references department1 on delete cascade;
+
+8 alter table employee modify(salary default 10000);
+insert into employee values(200,'parth','M',9999999,'delhi',321);
