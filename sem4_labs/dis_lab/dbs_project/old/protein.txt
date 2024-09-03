@@ -1,9 +1,0 @@
-chicken,Non-Veg
-fish,Non-Veg
-egg,Non-Veg
-panner,Veg
-soya,Veg
-chia seeds,Veg
-tofu,Vegan
-quionna,Vegan
-hemp seeds,Vegan
