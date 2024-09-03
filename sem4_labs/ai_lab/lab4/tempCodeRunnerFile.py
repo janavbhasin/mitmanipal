@@ -1,0 +1,1 @@
+and graph[current_node][start] != 0
