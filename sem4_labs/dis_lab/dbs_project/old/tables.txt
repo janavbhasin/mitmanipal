@@ -1,0 +1,72 @@
+USER:
+CREATE TABLE if not EXSIST user(
+    id INTEGER not null primary key autoincrement,
+    username VARCHAR(50) UNIQUE not null,
+    password VARCHAR(50) not null,
+    email VARCHAR(50) not null,
+    name VARCHAR(100) not null,
+    age INTEGER not null,
+    height NUMERIC(2,1) not null,
+    weight NUMERIC(5,2) not null,
+    mealpref VARCHAR(50)not null,
+    sex VARCHAR(10) not null,
+    mobile_no INTEGER not null,
+    CONSTRAINT valid_sex check(sex in ('Male','Female')),
+    CONSTRAINT valid_mealpref check(meal_pref in ('Veg','Non-Veg','Vegan')),
+    CONSTRAINT PW_len check(length(password)>=8));
+
+
+BMI:
+CREATE TABLE if not EXSIST bmi(
+    id INTEGER not null primary key autoincrement,
+    bmi NUMERIC(3,1)not null,
+    CONSTRAINT universal_id FOREIGN KEY(id) REFRENCES user(id) on delete cascade on update cascade);
+
+
+ESSENTIAL_FRUITS:
+CREATE TABLE if not EXSIST essential_fruits(
+    id INTEGER not null primary key autoincrement,
+    fruit1 VARCHAR(10) not null,
+    fruit2 VARCHAR(10) not null,
+    fruit3 VARCHAR(10) not null,
+    fruit4 VARCHAR(10) not null,
+    fruit5 VARCHAR(10) not null,
+    fruit6 VARCHAR(10) not null,
+    CONSTRAINT uni_id FOREIGN KEY(id) REFRENCES user(id) on delete cascade on update cascade);
+
+
+ESSENTIAL_PROTEIN:
+CREATE TABLE if not EXSIST essential_protein(
+    id INTEGER not null primary key autoincrement,
+    p1 VARCHAR(10) not null,
+    p2 VARCHAR(10) not null,
+    p3 VARCHAR(10) not null
+    CONSTRAINT universal FOREIGN KEY(id) REFRENCES user(id) on delete cascade on update cascade);
+
+
+LOG_TABLE:
+CREATE TABLE IF NOT EXISTS logs(
+    log_date DATE NOT NULL,
+    username VARCHAR(10) NOT NULL,
+    GRAVY1 VARCHAR(10),
+    GRAVY2 VARCHAR(10),
+    GRAVY3 VARCHAR(10),
+    BREAD1 VARCHAR(10),
+    BREAD2 VARCHAR(10),
+    BREAD3 VARCHAR(10),
+    PRIMARY KEY (log_date, username),
+    CONSTRAINT g1 CHECK(GRAVY1 IN ('RAJMA','KADHI','PANEER','POTATO','CHICKEN','OMLETE','FISH')),
+    CONSTRAINT g2 CHECK(GRAVY2 IN ('RAJMA','KADHI','PANEER','POTATO','CHICKEN','OMLETE','FISH')),
+    CONSTRAINT g3 CHECK(GRAVY3 IN ('RAJMA','KADHI','PANEER','POTATO','CHICKEN','OMLETE','FISH')),
+    CONSTRAINT b1 CHECK(BREAD1 IN ('ROTI','WHITE-BREAD','BROWN-BREAD','RICE')),
+    CONSTRAINT b2 CHECK(BREAD2 IN ('ROTI','WHITE-BREAD','BROWN-BREAD','RICE')),
+    CONSTRAINT b3 CHECK(BREAD3 IN ('ROTI','WHITE-BREAD','BROWN-BREAD','RICE'))
+);
+
+
+ALLERGIES:
+CREATE TABLE if not EXSIST allergies(
+    usrename VARCHAR(10) not null,
+    ALLERGY1 VARCHAR(10),
+    CONSTRAINT aller FOREIGN KEY(username) REFRENCES user(username) on delete cascade 
+);

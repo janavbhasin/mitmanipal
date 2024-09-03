@@ -1,0 +1,18 @@
+avocado,<25
+orange,<25
+pumpkin,<25
+watermelon,<25
+kiwi,<25
+apple, <25
+mango,25-30
+strawberry,25-30
+dragon-fruit,25-30
+guava,25-30
+blueberry,25-30
+raspberry,25-30
+litchi,>30
+pineapple,>30
+prunes,>30
+dates,>30
+grape,>30
+banana,>30
