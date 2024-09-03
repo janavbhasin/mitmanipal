@@ -1,0 +1,24 @@
+Create table account(acc_no numeric(6),balance numeric(8),branch_name varchar(30));
+
+create table branch(branch_name varchar(30),branch_city varchar(30),assests numeric(2));
+
+create table customer(customer_name varchar(30),customer_street varchar(30),customer_city varchar(30));
+
+insert into account values(1,123456,'Savings');
+insert into account values(2,234567,'Personal');
+insert into account values(3,345678,'corporate');
+insert into account values(4,456789,'Savings');
+insert into account values(5,567890,'Personal');
+
+insert into branch values('finance','mumbai',1);
+insert into branch values('management','kerala',2);
+insert into branch values('media','noida',3);
+insert into branch values('management','punjab',4);
+insert into branch values('finanace','gurgaon',5);
+
+insert into customer values('balaji','m groad','mumbai');
+insert into customer values('pallavi','mg road','kerala');
+insert into customer values('akshay','bose road','noida');
+insert into customer values('abhayinder','kasi road','punjab');
+insert into customer values('janav','akashneem marg','gurgaon');
+Sent from my iPhone

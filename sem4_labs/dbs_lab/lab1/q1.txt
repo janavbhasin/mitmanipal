@@ -1,0 +1,27 @@
+//q1
+create table employee(emp_no numeric(3),emp_name varchar(30),emp_address varchar(30));
+insert into employee values(1,'Janav','Haryana');
+insert into employee values(2,'shagnik','Mangalore');
+insert into employee values(3,'Anuj','Manipal');
+insert into employee values(4,'Anish','Haryana');
+insert into employee values(5,'Subham','Bangalore');
+//q2
+ select emp_name from employee;
+//q3
+select*from employee where emp_address='Manipal';
+//q4
+alter table employee add emp_salary numeric(8);
+//q5
+update employee set emp_salary=123456 where emp_no=1;
+update employee set emp_salary=234567 where emp_no=2;
+update employee set emp_salary=345678 where emp_no=3;
+update employee set emp_salary=456789 where emp_no=4;
+update employee set emp_salary=567890 where emp_no=5;
+//q6
+desc employee;
+//q7
+delete from employee where emp_address='Mangalore';
+//q8
+RENAME employee to employee1;
+//q9
+drop table employee1;
