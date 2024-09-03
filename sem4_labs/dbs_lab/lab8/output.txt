@@ -1,0 +1,124 @@
+Table created.
+
+SP2-0158: unknown SET option "server"
+Enter value for deptname: Comp. Sci.;
+old   6:     str:='&DeptName';
+new   6:     str:='Comp. Sci.;';
+
+PL/SQL procedure successfully completed.
+
+
+
+
+
+
+ID: 70557 Name: Snow Dept_name: Physics Total credits: 0
+ID: 12345 Name: Shankar Dept_name: Comp. Sci. Total credits: 32
+ID: 55739 Name: Sanchez Dept_name: Music Total credits: 38
+ID: 45678 Name: Levy Dept_name: Physics Total credits: 46
+ID: 54321 Name: Williams Dept_name: Comp. Sci. Total credits: 54
+ID: 44553 Name: Peltier Dept_name: Physics Total credits: 56
+ID: 76543 Name: Brown Dept_name: Comp. Sci. Total credits: 58
+ID: 76653 Name: Aoi Dept_name: Elec. Eng. Total credits: 60
+ID: 19991 Name: Brandt Dept_name: History Total credits: 80
+ID: 98765 Name: Bourikas Dept_name: Elec. Eng. Total credits: 98
+
+PL/SQL procedure successfully completed.
+
+
+
+
+
+Course ID: CS-101 Title: Intro. to Computer Science Dept name: Comp. Sci.
+Credits: 4 Instructor name: Srinivasan Building: Packard Room number: 101 Time
+slot id: H Total students enrolled: 6
+Course ID: CS-315 Title: Robotics Dept name: Comp. Sci. Credits: 3 Instructor
+name: Srinivasan Building: Watson Room number: 120 Time slot id: D Total
+students enrolled: 2
+Course ID: CS-347 Title: Database System Concepts Dept name: Comp. Sci. Credits:
+3 Instructor name: Srinivasan Building: Taylor Room number: 3128 Time slot id: A
+Total students enrolled: 2
+Course ID: FIN-201 Title: Investment Banking Dept name: Finance Credits: 3
+Instructor name: Wu Building: Packard Room number: 101 Time slot id: B Total
+students enrolled: 1
+Course ID: MU-199 Title: Music Video Production Dept name: Music Credits: 3
+Instructor name: Mozart Building: Packard Room number: 101 Time slot id: D Total
+students enrolled: 1
+Course ID: PHY-101 Title: Physical Principles Dept name: Physics Credits: 4
+Instructor name: Einstein Building: Watson Room number: 100 Time slot id: A
+Total students enrolled: 1
+Course ID: HIS-351 Title: World History Dept name: History Credits: 3 Instructor
+name: El Said Building: Painter Room number: 514 Time slot id: C Total students
+enrolled: 1
+Course ID: CS-101 Title: Intro. to Computer Science Dept name: Comp. Sci.
+Credits: 4 Instructor name: Katz Building: Packard Room number: 101 Time slot
+id: F Total students enrolled: 1
+Course ID: CS-319 Title: Image Processing Dept name: Comp. Sci. Credits: 3
+Instructor name: Katz Building: Watson Room number: 100 Time slot id: B Total
+students enrolled: 1
+Course ID: BIO-101 Title: Intro. to Biology Dept name: Biology Credits: 4
+Instructor name: Crick Building: Painter Room number: 514 Time slot id: B Total
+students enrolled: 1
+Course ID: BIO-301 Title: Genetics Dept name: Biology Credits: 4 Instructor
+name: Crick Building: Painter Room number: 514 Time slot id: A Total students
+enrolled: 1
+Course ID: CS-190 Title: Game Design Dept name: Comp. Sci. Credits: 4 Instructor
+name: Brandt Building: Taylor Room number: 3128 Time slot id: E Total students
+enrolled: 0
+Course ID: CS-190 Title: Game Design Dept name: Comp. Sci. Credits: 4 Instructor
+name: Brandt Building: Taylor Room number: 3128 Time slot id: A Total students
+enrolled: 2
+Course ID: CS-319 Title: Image Processing Dept name: Comp. Sci. Credits: 3
+Instructor name: Brandt Building: Taylor Room number: 3128 Time slot id: C Total
+students enrolled: 1
+Course ID: EE-181 Title: Intro. to Digital Systems Dept name: Elec. Eng.
+Credits: 3 Instructor name: Kim Building: Taylor Room number: 3128 Time slot id:
+C Total students enrolled: 1
+
+
+
+
+
+
+
+PL/SQL procedure successfully completed.
+
+
+
+
+
+
+
+
+5 rows updated.
+
+
+PL/SQL procedure successfully completed.
+
+
+
+
+
+
+Enter value for courseid: CS-101
+old   6:     cid := '&CourseID';
+new   6:     cid := 'CS-101';
+ID: 10101 Name: Srinivasan
+ID: 45565 Name: Katz
+
+PL/SQL procedure successfully completed.
+
+
+
+
+
+ID: 12345Name: Shankar
+ID: 44553Name: Peltier
+ID: 76653Name: Aoi
+ID: 98988Name: Tanaka
+
+PL/SQL procedure successfully completed.
+
+
+
+
