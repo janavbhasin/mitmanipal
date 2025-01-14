@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Input Groups, Buttons, Badges</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .top {
+            flex: 1;
+            background-color: lightblue;
+            padding: 20px;
+        }
+        .bottom {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+        }
+        .left, .middle, .right {
+            flex: 1;
+            padding: 20px;
+        }
+        .left {
+            background-color: lightgreen;
+        }
+        .middle {
+            background-color: lightyellow;
+        }
+        .right {
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="top">
+            <h2>Top Section with Inputs and Buttons</h2>
+            <form>
+                <div class="form-group">
+                    <label for="emailInput">Email address</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@</span>
+                        </div>
+                        <input type="email" class="form-control" id="emailInput" placeholder="Enter email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="usernameInput">Username</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="usernameInput" placeholder="Enter username">
+                        <div class="input-group-append">
+                            <span class="input-group-text">.com</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Button Group</label>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary">Left</button>
+                        <button type="button" class="btn btn-secondary">Middle</button>
+                        <button type="button" class="btn btn-secondary">Right</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Notifications</label>
+                    <button class="btn btn-info">
+                        Notifications <span class="badge badge-light">4</span>
+                    </button>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+        <div class="bottom">
+            <div class="left">
+                <h3>Left Section</h3>
+                <p>This is the left section of the bottom half.</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search left...">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="middle">
+                <h3>Middle Section</h3>
+                <p>This is the middle section of the bottom half.</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search middle...">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button">
+                            Search <span class="badge badge-light">3</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <h3>Right Section</h3>
+                <p>This is the right section of the bottom half.</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search right...">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="button">
+                            Search <span class="badge badge-light">5</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
