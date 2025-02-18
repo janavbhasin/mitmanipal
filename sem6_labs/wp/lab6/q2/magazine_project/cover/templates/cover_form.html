@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magazine Cover Generator</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Generate Magazine Front Cover</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="title">Magazine Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+        
+        <label for="subtitle">Subtitle:</label>
+        <input type="text" id="subtitle" name="subtitle" required><br><br>
+        
+        <label for="background_color">Background Color:</label>
+        <input type="color" id="background_color" name="background_color"><br><br>
+        
+        <label for="font_size">Font Size:</label>
+        <input type="range" id="font_size" name="font_size" min="10" max="100" value="36"><br><br>
+        
+        <label for="font_color">Font Color:</label>
+        <input type="color" id="font_color" name="font_color"><br><br>
+        
+        <label for="image_url">Cover Image URL:</label>
+        <input type="url" id="image_url" name="image_url" required><br><br>
+        
+        <button type="submit">Generate Cover</button>
+    </form>
+</div>
+
+<div class="cover-preview" style="background-color: {{ background_color }};">
+    <img src="{{ image_url }}" alt="Cover Image" class="cover-image">
+    <h2 style="color: {{ font_color }}; font-size: {{ font_size }}px;">{{ title }}</h2>
+    <p style="color: {{ font_color }}; font-size: {{ font_size }}px;">{{ subtitle }}</p>
+</div>
+
+</body>
+</html>
