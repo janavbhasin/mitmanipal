@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Reviews</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Book Reviews</h1>
+        </header>
+        <section>
+            <p><strong>Review 1:</strong> Amazing book! A must-read.</p>
+            <p><strong>Review 2:</strong> Quite an interesting storyline and deep characters.</p>
+        </section>
+        <footer>
+            <a href="{% url 'home' %}">Back to Home</a>
+        </footer>
+    </div>
+</body>
+</html>
