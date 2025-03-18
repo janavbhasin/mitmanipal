@@ -1,0 +1,21 @@
+<!-- calculate/templates/calculate/page2.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2 - Result</title>
+</head>
+<body>
+    <h1>CGPA Result</h1>
+
+    {% if name and cgpa %}
+        <p>Hello, {{ name }}!</p>
+        <p>Your CGPA is: {{ cgpa|floatformat:2 }}</p>
+    {% else %}
+        <p>Invalid data. Please try again.</p>
+    {% endif %}
+
+    <a href="{% url 'page1' %}">Go Back to Page 1</a>
+</body>
+</html>

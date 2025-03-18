@@ -1,0 +1,33 @@
+<!-- voting/templates/voting/vote.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote for the Book</title>
+</head>
+<body>
+    <h1>How is the book "ASP.NET with C# by Vipul Prakashan?"</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label>
+            <input type="radio" name="vote_choice" value="Good"> Good
+        </label><br>
+        <label>
+            <input type="radio" name="vote_choice" value="Satisfactory"> Satisfactory
+        </label><br>
+        <label>
+            <input type="radio" name="vote_choice" value="Bad"> Bad
+        </label><br><br>
+        <button type="submit">VOTE</button>
+    </form>
+
+    <h2>Vote Results</h2>
+    <div>
+        <p>Good: {{ good_percentage|floatformat:2 }}% ({{ total_votes }} votes)</p>
+        <p>Satisfactory: {{ satisfactory_percentage|floatformat:2 }}% ({{ total_votes }} votes)</p>
+        <p>Bad: {{ bad_percentage|floatformat:2 }}% ({{ total_votes }} votes)</p>
+    </div>
+</body>
+</html>
