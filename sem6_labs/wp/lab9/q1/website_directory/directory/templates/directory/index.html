@@ -1,0 +1,8 @@
+<h1>Website Directory</h1>
+<a href="{% url 'add_category' %}">Add Category</a> |
+<a href="{% url 'add_page' %}">Add Page</a>
+<ul>
+  {% for category in categories %}
+    <li><a href="{% url 'category_detail' category.id %}">{{ category.name }}</a> - Visits: {{ category.visits }}, Likes: {{ category.likes }}</li>
+  {% endfor %}
+</ul>

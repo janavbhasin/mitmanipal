@@ -1,0 +1,6 @@
+<h2>Category: {{ category.name }}</h2>
+<ul>
+  {% for page in pages %}
+    <li><a href="{{ page.url }}" target="_blank">{{ page.title }}</a> - Views: {{ page.views }}</li>
+  {% endfor %}
+</ul>
